@@ -65,6 +65,7 @@ public class PointController : MonoBehaviour
 
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0)) {
+            anim.speed = 1;
 
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -72,6 +73,7 @@ public class PointController : MonoBehaviour
             if (hit.collider.CompareTag("Button1")) {
                 Debug.Log("Button1 hit!");
                 anim.speed = 1;
+                hit.collider.GetComponent<RayCheck>().RayCheckIsTrue = true;
             }
         }
     }
